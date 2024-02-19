@@ -1,0 +1,375 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(assets/fonts/Roboto-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(assets/fonts/Roboto-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  --primary-clr: hsl(234, 29%, 20%);
+  --dark-grey-clr: hsl(235, 18%, 26%);
+  --grey-clr: hsl(231, 7%, 60%);
+  --btn-hover-clr: linear-gradient(90deg, rgba(255, 83, 123, 1) 0%, rgba(255, 105, 58, 1) 100%);
+  --error-clr: hsl(4, 100%, 67%);
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--dark-grey-clr);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  padding: 20px;
+  border-radius: 35px;
+  box-shadow: 0px 15px 25px -2px rgba(0, 0, 0, 0.2);
+  gap: 45px;
+  margin: 50px;
+}
+
+.left-side {
+  text-align: left;
+  flex: 1;
+  padding: 45px;
+}
+.left-side > p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.right-side {
+  overflow: hidden;
+  flex: 1;
+  border-radius: 15px;
+}
+.right-side img {
+  width: 100%;
+  object-fit: cover;
+}
+.main-title {
+  color: var(--primary-clr);
+  font-size: 55px;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+}
+
+p {
+  font-size: 16px;
+  color: var(--primary-clr);
+}
+
+.description-options {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.description-options p {
+  padding-left: 16px;
+  margin: 8px 0;
+}
+
+form {
+  margin-top: 35px;
+}
+
+form label,
+form input {
+  display: block;
+}
+
+form input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.btn {
+  position: relative;
+  background: var(--primary-clr);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 25px;
+  font-weight: 700;
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  width: 100%;
+  z-index: 1;
+}
+
+/*? SUBMIT BUTTON BACKGROUND HOVER EFFECT */
+
+.btn::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-hover-clr);
+  border-radius: 10px;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  opacity: 1;
+  box-shadow: 0px 20px 30px 0px rgba(255, 105, 58, 0.4);
+}
+
+.btn:active::before {
+  background-color: linear-gradient(
+    90deg,
+    rgba(255, 83, 123, 0.6) 0%,
+    rgba(255, 105, 58, 0.6) 100%
+  );
+}
+
+.email-input {
+  border: 1px solid var(--grey-clr);
+  margin-top: 10px;
+  color: var(--primary-clr);
+}
+
+.email-input::placeholder {
+  color: var(--grey-clr);
+}
+.email-input:focus {
+  outline: 1px solid var(--primary-clr);
+}
+
+form label {
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.invalid-email-error-msg {
+  color: var(--error-clr);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.invalid-email-error {
+  background: rgba(255, 98, 87, 0.25);
+  color: var(--error-clr);
+  border: 1px solid var(--error-clr);
+}
+.shake-animation {
+  animation: shake 0.15s 0.1s 4;
+}
+@keyframes shake {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+/*? SUCCESS MESSAGE STYLES  */
+
+.success-container {
+  z-index: 10;
+  position: absolute;
+  inset: 0;
+  background: var(--dark-grey-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 450px;
+  background-color: white;
+  padding: 60px;
+  border-radius: 35px;
+  box-shadow: 0px 15px 25px -2px rgba(0, 0, 0, 0.2);
+  animation: successMsgAnimation 0.3s ease-in;
+}
+
+@keyframes successMsgAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.content img {
+  display: block;
+  scale: 2.5;
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+
+.content h1 {
+  color: var(--primary-clr);
+  font-size: 50px;
+  font-weight: 700;
+  margin: 15px 0;
+  line-height: 1.1;
+}
+
+.content p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.content p span {
+  font-weight: 700;
+}
+
+/* MOBILE VIEW */
+
+@media only screen and (max-width: 767px) {
+  body {
+    height: 100dvh;
+    background-color: white;
+    overflow: hidden;
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column-reverse;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 10px;
+  }
+  .left-side {
+    text-align: left;
+    padding: 25px;
+    width: 100%;
+  }
+
+  p {
+    font-size: 14px;
+  }
+  .main-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  form {
+    margin-top: 20px;
+  }
+  .right-side {
+    width: 100%;
+    overflow: hidden;
+    flex: 1;
+    border-radius: 0 0 10px 10px;
+  }
+  .right-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  form input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  form label {
+    font-size: 10px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  .success-container {
+    background-color: white;
+  }
+  .content {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 30px;
+    max-width: 380px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+  .content h1 {
+    font-size: 35px;
+  }
+  .content img {
+    scale: 1.8;
+    margin-bottom: 30px;
+  }
+}
+
+/* TABLET VIEW */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  p {
+    font-size: 14px;
+  }
+  .main-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .right-side img {
+    max-width: 100%;
+  }
+  form input {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 15px;
+    margin-top: 20px;
+  }
+}
